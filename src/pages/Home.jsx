@@ -1,10 +1,11 @@
+import ConnectWallet from "../components/ConnectWallet";
 import { Box } from "../styles/globalStyles";
 
 const Home = () => {
   return (
-    <div>
-      <Box>home</Box>
-    </div>
+    <Box>
+      <ConnectWallet />
+    </Box>
   );
 };
 
