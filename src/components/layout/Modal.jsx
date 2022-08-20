@@ -6,7 +6,6 @@ const BigCard = styled.section`
   top: 50%;
   left: 50%;
   padding: 1rem 2rem;
-
   background-color: white;
   box-shadow: 2px 2px 2px grey;
   border-radius: 15px;
@@ -17,6 +16,11 @@ const BigCard = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    width: 35rem;
+    height: 25rem;
+  }
 `;
 
 const Overlay = styled.div`

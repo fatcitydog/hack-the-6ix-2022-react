@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import { Tilte, Box, Text } from "../styles/globalStyles";
+import { RootBox, Tilte, Box, Text } from "../styles/globalStyles";
 
-import { RootBox } from "./HeroSection";
+
+const SubTitle = styled(Tilte)`
+  font-size: 1.5rem;
+`;
 
 const MintSection = () => {
   return (
@@ -11,7 +14,7 @@ const MintSection = () => {
       <Tilte>MINT YOUR NFT</Tilte>
       <Text>in under 18 seconds</Text>
       <Box>
-        <Tilte>Quick Mint</Tilte>
+        <SubTitle>Quick Mint</SubTitle>
         <Text>
           An easy and quick minting solution for those who just want to mints a
           NFT

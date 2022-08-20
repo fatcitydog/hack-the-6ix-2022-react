@@ -16,23 +16,41 @@ body {
   }
 `;
 
-export const Container = styled.div`
-  width: 100%;
-  min-width: 320px;
-  display: flex;
-  justify-content: center;
-`;
+
 
 export const Wrapper = styled.div`
-  @media screen and (min-width: 768px) {
-    max-width: 1400px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
 `;
 
 export const Box = styled.section`
   display: flex;
   flex-direction: column;
 
+`
+
+export const RootBox = styled(Box)`
+  background-color: white;
+  color: black;
+  margin: 1rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  justify-content: space-between;
+  @media screen and (min-width: 768px) {
+    width: 20rem;
+    height: 32rem;
+    margin-left: 4rem;
+  }
+`;
+
+export const Input = styled.input`
+
+border-radius: 50px;
+border: 1px solid silver;
+padding: 1.5rem;
 `
 
 export const Tilte = styled.p`
@@ -49,8 +67,10 @@ export const Text = styled.p`
   letter-spacing: 1px;
 `
 
-
-
+export const Image = styled.img`
+max-height: auto;
+width: 6rem;
+`
 
 
 const ring = keyframes`
@@ -65,6 +85,8 @@ const ring = keyframes`
     opacity: 0;
   }
 `;
+
+
 
 export const FancyButton = styled.button`
 

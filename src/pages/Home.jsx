@@ -9,6 +9,7 @@ import MintSection from "../components/MintSection";
 
 const RootBox = styled(Box)`
   height: 100vh;
+  width: 100%;
   background-color: grey;
   justify-content: center;
 `;

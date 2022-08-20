@@ -1,16 +1,9 @@
 import styled from "styled-components";
 
-import { Tilte, Box, Text } from "../styles/globalStyles";
+import { Tilte, RootBox, Text } from "../styles/globalStyles";
 import { FancyButton } from "../styles/globalStyles";
 
-export const RootBox = styled(Box)`
-  background-color: white;
-  color: black;
-  margin: 1rem;
-  padding: 2rem;
-  border-radius: 1rem;
-  justify-content: space-between;
-`;
+
 
 const HeroSection = ({ handleCardOpen }) => {
   return (
