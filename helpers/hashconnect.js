@@ -20,12 +20,14 @@ const connectToWallet = async () => {
     "testnet",
     false
   );
+
   console.log(pairingString);
   hashconnect.findLocalWallets()
     ? hashconnect.findLocalWallets()
     : window.open("https://wallet.hashpack.app/login/signin", "_blank");
 
   hashconnect.connectToLocalWallet(pairingString);
+  return pairingString;
 };
 
 export default connectToWallet;
