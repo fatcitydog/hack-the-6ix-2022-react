@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { Tilte, Box, Text } from "../styles/globalStyles";
@@ -15,7 +16,7 @@ const MintSection = () => {
           An easy and quick minting solution for those who just want to mints a
           NFT
         </Text>
-        <button>Continue</button>
+        <Link to="/upload">Continue</Link>
       </Box>
     </RootBox>
   );

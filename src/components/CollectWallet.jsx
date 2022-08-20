@@ -1,4 +1,4 @@
-const CollectWallet = ({ handleCardOpen }) => {
+const CollectWallet = ({ handleCardOpen, handleAuth }) => {
   const connectWithWallet = async () => {
     const data = "data";
 
@@ -10,6 +10,7 @@ const CollectWallet = ({ handleCardOpen }) => {
       const data = await connectWithWallet();
       if (data) {
         console.log("connect!");
+        handleAuth();
         handleCardOpen();
       }
     } catch (err) {
@@ -20,7 +21,7 @@ const CollectWallet = ({ handleCardOpen }) => {
   return (
     <div>
       login with:
-      <button onClick={handleConnectWallet}> connect</button>
+      <button onClick={handleConnectWallet}>Connect</button>
     </div>
   );
 };

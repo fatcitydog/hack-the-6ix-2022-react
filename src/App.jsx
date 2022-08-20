@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import WalletConnect from "./components/layout/WalletConnect";
+
 import { GlobalStyles } from "./styles/globalStyles";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
+import UploadImage from "./pages/UploadImage";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/walletconnect" element={<WalletConnect />} />
+        <Route path="/upload" element={<UploadImage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
