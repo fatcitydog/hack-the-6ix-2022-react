@@ -1,7 +1,7 @@
 import { HashConnect } from "hashconnect";
 
 const connectToWallet = async () => {
-  let hashconnect = new HashConnect();
+  let hashconnect = new HashConnect(true);
 
   let appData = {
     name: "Hashconnect demo",
@@ -9,8 +9,8 @@ const connectToWallet = async () => {
     icon: "https://static.wikia.nocookie.net/pokemon/images/8/87/Pok%C3%A9_Ball.png/revision/latest?cb=20200918005128",
   };
   let initData = await hashconnect.init(appData);
-  let privateKey = initData.privKey;
-  console.log(privateKey + " is the privateKey");
+  let encryptionKey = initData.encryptionKey;
+  console.log(encryptionKey + " is the privateKey");
 
   let state = await hashconnect.connect();
   let topic = state.topic;
