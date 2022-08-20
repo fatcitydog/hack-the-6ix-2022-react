@@ -1,9 +1,8 @@
-console.clear();
 require("dotenv").config();
 const {
 	Client,
 } = require("@hashgraph/sdk");
-const {Account, createNFT} = require("./utils.js")
+const {Account, createNFT, viewNFTs} = require("./utils.js")
 
 // Configure accounts and client, and generate needed keys
 const accountId = process.env.MY_ACCOUNT_ID;
@@ -16,5 +15,5 @@ const account = new Account(accountId, privateKey, publicKey);
 //IPFS content identifiers for which we will create a NFT
 CID = ["QmTzWcVfk88JRqjTpVwHzBeULRTNzHY7mnBSG42CpwHmPa"];
 
-let {tokenId, mintRx} = createNFT(client, account, CID, "Test NFT Name", "Test NFT symbol")
-console.log(tokenId, mintRx)
+// let {tokenId, mintRx} = createNFT(client, account, CID, "Test NFT Name 3", "Test NFT symbol 3")
+let accountInfo = viewNFTs(client, account);
