@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 
 import { Box, RootBox, Input } from "../styles/globalStyles";
 import DropImage from "../components/DropImage";
+import { uploadFileAndCreateNFT } from "../../create-utils";
+import { account } from "../../account"
+import { viewNFTs } from "../../view-utils";
 
 const PageBox = styled(Box)`
   height: 100vh;
@@ -34,10 +37,9 @@ const UploadImage = () => {
   }, [name]);
 
   //implement a function to mint the image to NFT
-  const handleMint = () => {
-    //call the function here
-    console.log(name);
-    console.log(file);
+  const handleMint = async () => {
+    // await uploadFileAndCreateNFT(file, name, account);
+    viewNFTs(account);
   };
 
   return (
