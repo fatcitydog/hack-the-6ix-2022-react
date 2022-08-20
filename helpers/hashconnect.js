@@ -1,12 +1,13 @@
 import { HashConnect } from "hashconnect";
 
 const connectToWallet = async () => {
-  let hashconnect = new HashConnect();
+  let hashconnect = new HashConnect(true);
 
   let appData = {
-    name: "Hashconnect demo",
-    description: "a demo for hashconnect",
-    icon: "https://static.wikia.nocookie.net/pokemon/images/8/87/Pok%C3%A9_Ball.png/revision/latest?cb=20200918005128",
+    name: "Hack the 6ix Hack",
+    description:
+      "a demo for hack the 6ix hackathon using Hedera and hashconnect",
+    icon: "https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/044/308/datas/original.png",
   };
   let initData = await hashconnect.init(appData);
   let encryptionKey = initData.encryptionKey;

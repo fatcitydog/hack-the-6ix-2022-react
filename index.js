@@ -1,8 +1,6 @@
 require("dotenv").config();
-const {
-	Client,
-} = require("@hashgraph/sdk");
-const {Account, createNFT, viewNFTs} = require("./utils.js")
+const { Client } = require("@hashgraph/sdk");
+const { Account, createNFT, viewNFTs } = require("./utils.js");
 
 // Configure accounts and client, and generate needed keys
 const accountId = process.env.MY_ACCOUNT_ID;

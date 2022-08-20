@@ -5,6 +5,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
 import UploadImage from "./pages/UploadImage";
+import NFTDashboard from "./pages/NFTDashboard";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/upload" element={<UploadImage />} />
+          <Route path="/dashboard" element={<NFTDashboard />} />
         </Routes>
         <Footer />
       </Wrapper>
