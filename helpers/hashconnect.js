@@ -1,7 +1,7 @@
 import { HashConnect } from "hashconnect";
 
 const connectToWallet = async () => {
-  let hashconnect = new HashConnect(true);
+  let hashconnect = new HashConnect();
 
   let appData = {
     name: "Hashconnect demo",
@@ -20,9 +20,14 @@ const connectToWallet = async () => {
     "testnet",
     false
   );
-  hashconnect.findLocalWallets();
+
+  console.log(pairingString);
+  hashconnect.findLocalWallets()
+    ? hashconnect.findLocalWallets()
+    : window.open("https://wallet.hashpack.app/login/signin", "_blank");
 
   hashconnect.connectToLocalWallet(pairingString);
+  return pairingString;
 };
 
 export default connectToWallet;
