@@ -3,7 +3,8 @@ import React from "react";
 import { Box } from "../styles/globalStyles";
 import { TokenNftInfo } from "@hashgraph/sdk";
 
-import viewNFTs from "../../utils.js";
+import { viewNFTs } from "../../view-utils";
+// import { viewNFTs } from "../../utils.js";
 // const { viewNFTs } = require("../../utils.js");
 // import viewNFTs from "../../utils";
 const RootBox = styled(Box)`
@@ -12,7 +13,7 @@ const RootBox = styled(Box)`
   background-color: grey;
   justify-content: center;
 `;
-console.log(TokenNftInfo);
+
 export default function NFTDashboard() {
   console.log(viewNFTs);
   return (

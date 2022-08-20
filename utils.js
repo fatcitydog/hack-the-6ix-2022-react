@@ -1,4 +1,4 @@
-const {
+import {
   TokenCreateTransaction,
   Client,
   PrivateKey,
@@ -13,7 +13,7 @@ const {
   AccountInfoQuery,
   TokenNftInfoQuery,
   NftId,
-} = require("@hashgraph/sdk");
+} from "@hashgraph/sdk";
 
 class Account {
   constructor(accountId, accountPrivateKey, accountPublicKey) {
@@ -105,7 +105,7 @@ async function createNFT(client, account, CID, tokenName, tokenSymbol) {
   return tokenId, mintRx;
 }
 
-async function viewNFTs(client, account) {
+export async function viewNFTs(client, account) {
   //Create the account info query
   const query = new AccountInfoQuery().setAccountId(account.accountId);
 
@@ -143,10 +143,3 @@ async function viewNFTs(client, account) {
   console.log(nftInfos.length);
   return nftInfos;
 }
-
-module.exports = {
-  Account,
-  createAccount,
-  createNFT,
-  viewNFTs,
-};
