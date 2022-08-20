@@ -6,6 +6,7 @@ import CollectWallet from "../components/CollectWallet";
 import { Box } from "../styles/globalStyles";
 import Modal from "../components/layout/Modal";
 import MintSection from "../components/MintSection";
+import Background from "../components/layout/Background";
 
 const RootBox = styled(Box)`
   height: 100vh;
@@ -41,13 +42,13 @@ const Home = () => {
   });
   return (
     <RootBox>
-      <div>some background</div>
+      <Background />
 
       {auth ? (
-        <div>
+        <>
           <MintSection />
           <WalletTokenBox>{pairingString}</WalletTokenBox>
-        </div>
+        </>
       ) : (
         <HeroSection handleCardOpen={handleCardOpen} />
       )}

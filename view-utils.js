@@ -60,6 +60,16 @@ export async function viewNFTs(account) {
 	return nftInfos;
 }
 
+// @james this is how you would get image url's for each NFT that has it
+    // const nfts = viewNFTs(account);
+    // for (let i = 0; i < nfts.length; i++) {
+    //   const nft = nfts[i];
+    //   const cid = String.fromCharCode(...nft.metadata);
+    //   if (cid.length > 1) {
+    //     await loadImage(cid);
+    //   }
+    // }
+
 export async function loadImage(cid) {
 	// https://docs.ipfs.tech/concepts/content-addressing/#cid-conversion
 	const new_cid = new CID(cid).toV1().toString('base32');

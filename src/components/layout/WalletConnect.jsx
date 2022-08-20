@@ -1,6 +1,7 @@
-import React from "react";
-import connectToWallet from "../../../helpers/hashconnect";
 import { useState } from "react";
+
+import connectToWallet from "../../../helpers/hashconnect";
+import { FancyButton } from "../../styles/globalStyles";
 
 export default function WalletConnect() {
   const [pairingString, setPairingString] = useState("");
@@ -13,7 +14,9 @@ export default function WalletConnect() {
     <>
       <div>Wallet Connect</div>
       <p>{pairingString}</p>
-      <button onClick={pairingStringHandler}>Connect to Wallet</button>
+      <FancyButton onClick={pairingStringHandler}>
+        Connect to Wallet
+      </FancyButton>
     </>
   );
 }
