@@ -29,11 +29,22 @@ const SubBox = styled(Box)`
 
 export default function NFTDashboard() {
   const [nftData, setNftData] = useState();
+  const [cidData, setCidData] = useState();
   const handleMint = async () => {
-    // await uploadFileAndCreateNFT(file, name, account);
-    const data = await viewNFTs(account);
-    setNftData(data);
-    console.log(data);
+    const nfts = await viewNFTs(account);
+
+    for (let i = 0; i < nfts.length; i++) {
+      const nft = nfts[i];
+      const cid = String.fromCharCode(...nft.metadata);
+      if (cid.length > 1) {
+        const cidFinal = await loadImage(cid);
+        console.log(loadImage(cid));
+        setCidData(cidFinal);
+      }
+      setNftData(nfts);
+    }
+    console.log(cidData);
+    console.log(nftData);
   };
   useEffect(() => {
     handleMint();
@@ -45,6 +56,7 @@ export default function NFTDashboard() {
       <SubBox>
         {nftData &&
           nftData.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)}
+        {<img style={{ height: "200px" }} src={cidData} />}
       </SubBox>
     </RootBox>
   );
