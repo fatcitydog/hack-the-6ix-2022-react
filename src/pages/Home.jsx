@@ -14,16 +14,25 @@ const RootBox = styled(Box)`
   justify-content: center;
 `;
 
+const WalletTokenBox = styled(Box)`
+  background-color: white;
+  position: absolute;
+  top: 5rem;
+  right: 2rem;
+  height: 3rem;
+  width: 10rem;
+  overflow: hidden;
+  justify-content: center;
+  padding: 0.5rem;
+`;
+
 const Home = () => {
   const [auth, setAuth] = useState(false);
+  const [pairingString, setPairingString] = useState("");
   const [cardOpen, setCardOpen] = useState(false);
 
   const handleCardOpen = () => {
     setCardOpen(!cardOpen);
-  };
-
-  const handleAuth = () => {
-    setAuth(!auth);
   };
 
   useEffect(() => {
@@ -34,7 +43,14 @@ const Home = () => {
     <RootBox>
       <div>some background</div>
 
-      {auth ? <MintSection /> : <HeroSection handleCardOpen={handleCardOpen} />}
+      {auth ? (
+        <div>
+          <MintSection />
+          <WalletTokenBox>{pairingString}</WalletTokenBox>
+        </div>
+      ) : (
+        <HeroSection handleCardOpen={handleCardOpen} />
+      )}
 
       {cardOpen && (
         <Modal
@@ -42,7 +58,8 @@ const Home = () => {
           children={
             <CollectWallet
               handleCardOpen={handleCardOpen}
-              handleAuth={handleAuth}
+              setAuth={setAuth}
+              setPairingString={setPairingString}
             />
           }
         />

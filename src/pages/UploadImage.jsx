@@ -39,6 +39,8 @@ const UploadImage = () => {
     }
   }, [image]);
 
+  //implement a function to mint the image to NFT
+
   return (
     <PageBox>
       <FormBox>
