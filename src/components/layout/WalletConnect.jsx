@@ -1,5 +1,6 @@
 import React from "react";
 import connectToWallet from "../../../helpers/hashconnect";
+import redirectToWebApp from "../../../helpers/hashconnectwebapp";
 export default function WalletConnect() {
   return (
     <>
