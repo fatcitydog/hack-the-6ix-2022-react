@@ -1,6 +1,6 @@
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Image } from "../styles/globalStyles";
 const getColor = ({ isDragAccept, isDragReject, isFocused }) => {
@@ -34,8 +34,9 @@ const Container = styled.div`
   transition: border 0.24s ease-in-out;
 `;
 
-const DropImage = ({ setIamge }) => {
+const DropImage = ({ setFile }) => {
   const [files, setFiles] = useState([]);
+
   const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
     useDropzone({
       accept: { "image/*": [] },
@@ -50,13 +51,15 @@ const DropImage = ({ setIamge }) => {
       },
     });
 
-  //next step: setIamge()
+  useEffect(() => {
+    setFile(files[0]);
+  }, [files]);
 
   return (
     <>
       <Container {...getRootProps({ isFocused, isDragAccept, isDragReject })}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
+        <p>Drag & drop a file here, or click to select file</p>
       </Container>
       {files.map((file) => (
         <div key={file.name}>
