@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
   color: black;
+  background-color: black;
   font-family: 'Familjen Grotesk', sans-serif;
   transition: all 0.50s linear;
   }
@@ -29,14 +30,28 @@ export const Wrapper = styled.div`
 `;
 
 export const Box = styled.section`
-  width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 1000px;
 
 `
+
+export const Tilte = styled.p`
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  letter-spacing: 2px;
+`
+
+export const Text = styled.p`
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  letter-spacing: 1px;
+`
+
+
+
+
 
 const ring = keyframes`
   0% {

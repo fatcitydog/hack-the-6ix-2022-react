@@ -6,11 +6,12 @@ const BigCard = styled.section`
   top: 50%;
   left: 50%;
   padding: 1rem 2rem;
+
   background-color: white;
   box-shadow: 2px 2px 2px grey;
   border-radius: 15px;
-  height: 80vh;
-  width: 100vw;
+  height: 50vh;
+  width: 100%;
   max-width: 1000px;
   transform: translate(-50%, -50%) !important;
   display: flex;
@@ -36,12 +37,12 @@ export const LargeCloseIcon = styled(BsXLg)`
   z-index: 2;
 `;
 
-export default function Modal({ action, context }) {
+export default function Modal({ action, children }) {
   return (
     <Overlay>
       <BigCard>
         <LargeCloseIcon onClick={action} />
-        {context}
+        {children}
       </BigCard>
     </Overlay>
   );
