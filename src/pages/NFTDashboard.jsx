@@ -30,7 +30,7 @@ export default function NFTDashboard() {
   return (
     <RootBox>
       <div>NFTDashboard</div>
-      {nftData && nftData.map((x) => console.log(x))}
+      {nftData && nftData.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)}
     </RootBox>
   );
 }
