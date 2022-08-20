@@ -1,26 +1,38 @@
+import connectToWallet from "../../helpers/hashconnect";
+import { useState } from "react";
+
 const CollectWallet = ({ handleCardOpen }) => {
-  const connectWithWallet = async () => {
-    const data = "data";
+  const [pairingString, setPairingString] = useState("");
 
-    return data;
+  const pairingStringHandler = async () => {
+    const string = await connectToWallet();
+    setPairingString(string);
   };
+  // not sure what to do with these functions sorry
+  // const connectWithWallet = async () => {
+  //   const data = "data";
 
-  const handleConnectWallet = async () => {
-    try {
-      const data = await connectWithWallet();
-      if (data) {
-        console.log("connect!");
-        handleCardOpen();
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //   return data;
+  // };
+
+  // const handleConnectWallet = async () => {
+  //   try {
+  //     const data = await connectWithWallet();
+  //     if (data) {
+  //       console.log("connect!");
+  //       handleCardOpen();
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <div>
+      pairingString:
+      {pairingString}
       login with:
-      <button onClick={handleConnectWallet}> connect</button>
+      <button onClick={pairingStringHandler}> connect</button>
     </div>
   );
 };
