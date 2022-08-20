@@ -38,15 +38,7 @@ const UploadImage = () => {
 
   //implement a function to mint the image to NFT
   const handleMint = async () => {
-    // await uploadFileAndCreateNFT(file, name, account);
-    const nfts = viewNFTs(account);
-    for (let i = 0; i < nfts.length; i++) {
-      const nft = nfts[i];
-      const cid = String.fromCharCode(...nft.metadata);
-      if (cid.length > 1) {
-        await loadImage(cid);
-      }
-    }
+    await uploadFileAndCreateNFT(file, name, account);
   };
 
   return (
