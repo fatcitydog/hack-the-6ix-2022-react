@@ -11,7 +11,6 @@ function App() {
     <BrowserRouter>
       <GlobalStyles />
       <Wrapper>
-        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/upload" element={<UploadImage />} />
