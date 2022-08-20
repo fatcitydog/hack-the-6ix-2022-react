@@ -60,7 +60,7 @@ async function createNFT(client, account, CID, tokenName, tokenSymbol) {
 		.setInitialSupply(0)
 		.setTreasuryAccountId(account.accountId)
 		.setSupplyType(TokenSupplyType.Finite)
-		.setMaxSupply(250)
+		.setMaxSupply(1)
 		.setSupplyKey(supplyKey)
 		.freezeWith(client);
 
@@ -115,23 +115,27 @@ async function viewNFTs(client, account) {
 	accountInfo.tokenRelationships._map.forEach((rel, id) => {
 		// let tokenId = TokenId.fromString(id);
 		// console.log(`Type of relationship: ${typeof tokenId}`);
+		console.log(Object.keys(rel), rel.tokenId)
 		tokenIds.push(id);
 	});
-	console.log("- NFTs: " + tokenIds + "\n");
 
 	// We are going to assume you can only create one copy of NFT
 	// so serial number is always 0
 	let nftInfos = [];
 	for (let i = 0; i < tokenIds.length; i++) {
 		let tokenId = TokenId.fromString(tokenIds[i]);
-		let nftId = new NftId(0, tokenId);
-		console.log(`- NFT ID: ${nftId} type: ${typeof nftId}`);
-		const nftInfo = await new TokenNftInfoQuery()
-			.setNftId(nftId)
-			.execute(client);	
-		nftInfos.push(nftInfo);
+		let nftId = new NftId(tokenId, 1);
+		try {
+			const nftInfo = await new TokenNftInfoQuery()
+				.setNftId(nftId)
+				.execute(client);	
+			nftInfos.push(nftInfo);
+		} catch (err) {
+			console.log(err);
+		}
 	}
 	console.log(nftInfos);
+	console.log(nftInfos.length);
 	return nftInfos;
 
 }
