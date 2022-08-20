@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from "../styles/globalStyles";
 import { TokenNftInfo } from "@hashgraph/sdk";
 
-import viewNFTs from "../../utils.js";
+import { viewNFTs } from "../../view-utils.js";
 // const { viewNFTs } = require("../../utils.js");
 // import viewNFTs from "../../utils";
 const RootBox = styled(Box)`

@@ -26,7 +26,6 @@ export async function viewNFTs(account) {
 	accountInfo.tokenRelationships._map.forEach((rel, id) => {
 		// let tokenId = TokenId.fromString(id);
 		// console.log(`Type of relationship: ${typeof tokenId}`);
-		console.log(Object.keys(rel), rel.tokenId)
 		tokenIds.push(id);
 	});
 
@@ -40,14 +39,16 @@ export async function viewNFTs(account) {
 			const nftInfo = await new TokenNftInfoQuery()
 				.setNftId(nftId)
 				.execute(client);	
-			nftInfos.push(nftInfo);
+			nftInfos.push(nftInfo[0]);
 		} catch (err) {
 			console.log(err);
 		}
 	}
-	console.log(nftInfos);
+	nftInfos.sort((a, b) => a.creationTime - b.creationTime);
 	console.log(nftInfos.length);
-	console.log(nftInfos[0].metadata)
+	for (let i = 0; i < nftInfos.length; i++) {
+		const nftInfo = nftInfos.at(i);
+		console.log(String.fromCharCode(...nftInfo.metadata));
+	}
 	return nftInfos;
-
 }
