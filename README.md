@@ -17,10 +17,12 @@ yarn dev
 ```
 
 
+## UI 
+Implement upload image function: pages/uploadImage and DropImage componets
+Get the wallet: walletConnect components
+
 
 ##deployment
-
-
 
 
 ## Tech Stack
