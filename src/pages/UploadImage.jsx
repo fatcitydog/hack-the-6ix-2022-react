@@ -6,7 +6,7 @@ import { Box, RootBox, Input } from "../styles/globalStyles";
 import DropImage from "../components/DropImage";
 import { uploadFileAndCreateNFT } from "../../create-utils";
 import { account } from "../../account"
-import { viewNFTs } from "../../view-utils";
+import { viewNFTs, loadImage } from "../../view-utils";
 
 const PageBox = styled(Box)`
   height: 100vh;
@@ -39,7 +39,14 @@ const UploadImage = () => {
   //implement a function to mint the image to NFT
   const handleMint = async () => {
     // await uploadFileAndCreateNFT(file, name, account);
-    viewNFTs(account);
+    const nfts = viewNFTs(account);
+    for (let i = 0; i < nfts.length; i++) {
+      const nft = nfts[i];
+      const cid = String.fromCharCode(...nft.metadata);
+      if (cid.length > 1) {
+        await loadImage(cid);
+      }
+    }
   };
 
   return (

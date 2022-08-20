@@ -5,9 +5,10 @@ import {
 	TokenNftInfoQuery,
 	NftId,
 } from "@hashgraph/sdk";
+import CID from "cids";
 
 export async function viewNFTs(account) {
-    const client = Client.forTestnet().setOperator(
+    const hederaClient = Client.forTestnet().setOperator(
         account.accountId, account.privateKey
     );
 
@@ -17,7 +18,7 @@ export async function viewNFTs(account) {
 
 	//Sign with client operator private key and submit the query to a Hedera network
 	console.log("- Viewing NFTs for account: " + account.accountId + "\n");
-	const accountInfo = await query.execute(client);
+	const accountInfo = await query.execute(hederaClient);
 	console.log("Got account info: ", accountInfo);
 
 	let tokenIds = [];
@@ -38,7 +39,7 @@ export async function viewNFTs(account) {
 		try {
 			const nftInfo = await new TokenNftInfoQuery()
 				.setNftId(nftId)
-				.execute(client);	
+				.execute(hederaClient);	
 			nftInfos.push(nftInfo[0]);
 		} catch (err) {
 			console.log(err);
@@ -46,9 +47,28 @@ export async function viewNFTs(account) {
 	}
 	nftInfos.sort((a, b) => a.creationTime - b.creationTime);
 	console.log(nftInfos.length);
-	for (let i = 0; i < nftInfos.length; i++) {
-		const nftInfo = nftInfos.at(i);
-		console.log(String.fromCharCode(...nftInfo.metadata));
+    for (let i = 0; i < nftInfos.length; i++) {
+      const nft = nftInfos[i];
+      const cid = String.fromCharCode(...nft.metadata);
+      if (cid.length > 1) {
+		console.log("CID: " + cid);
+		console.log("Length: ", cid.length);
+		const url = await loadImage(cid);
+		console.log("URL: " + url);
+      }
 	}
 	return nftInfos;
+}
+
+export async function loadImage(cid) {
+	// https://docs.ipfs.tech/concepts/content-addressing/#cid-conversion
+	const new_cid = new CID(cid).toV1().toString('base32');
+	console.log("New CID: " + new_cid);
+	// https://ipfs.github.io/public-gateway-checker/
+	const public_gateways = [
+		"https://ipfs.io/ipfs/",
+	]
+	const url = public_gateways[0] + new_cid;
+	console.log("URL: " + url);
+	return url;
 }
