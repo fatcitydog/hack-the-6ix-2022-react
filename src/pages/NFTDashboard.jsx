@@ -5,8 +5,7 @@ import { TokenNftInfo } from "@hashgraph/sdk";
 import { viewNFTs } from "../../view-utils.js";
 import { account } from "../../account.js";
 import { useState, useEffect } from "react";
-// const { viewNFTs } = require("../../utils.js");
-// import viewNFTs from "../../utils";
+import { Grid } from "@mui/material";
 
 const RootBox = styled(Box)`
   height: 100vh;
@@ -30,7 +29,8 @@ export default function NFTDashboard() {
   return (
     <RootBox>
       <div>NFTDashboard</div>
-      {nftData && nftData.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)}
+      {nftData &&
+        nftData.map((x) => <Grid>nft id: {x.nftId.tokenId.num.low}</Grid>)}
     </RootBox>
   );
 }
