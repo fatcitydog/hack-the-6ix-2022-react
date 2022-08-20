@@ -6,12 +6,25 @@ import { viewNFTs } from "../../view-utils.js";
 import { account } from "../../account.js";
 import { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
+import { loadImage } from "../../view-utils.js";
 
 const RootBox = styled(Box)`
   height: 100vh;
   width: 100%;
-  background-color: grey;
+  background-color: white;
   justify-content: center;
+  display: flex;
+
+  align-items: center;
+`;
+const SubBox = styled(Box)`
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 export default function NFTDashboard() {
@@ -29,8 +42,10 @@ export default function NFTDashboard() {
   return (
     <RootBox>
       <div>NFTDashboard</div>
-      {nftData &&
-        nftData.map((x) => <Grid>nft id: {x.nftId.tokenId.num.low}</Grid>)}
+      <SubBox>
+        {nftData &&
+          nftData.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)}
+      </SubBox>
     </RootBox>
   );
 }
