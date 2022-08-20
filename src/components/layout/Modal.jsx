@@ -16,6 +16,7 @@ const BigCard = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 100;
 
   @media screen and (min-width: 768px) {
     width: 35rem;
@@ -29,7 +30,8 @@ const Overlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(128, 128, 128, 0.8);
+  z-index: 100;
+  background-color: rgba(128, 128, 128, 0.9);
 `;
 
 export const LargeCloseIcon = styled(BsXLg)`

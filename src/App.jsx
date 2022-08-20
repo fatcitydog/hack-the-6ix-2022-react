@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { GlobalStyles, Wrapper } from "./styles/globalStyles";
-import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./pages/Home";
 import UploadImage from "./pages/UploadImage";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/upload" element={<UploadImage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Footer />
       </Wrapper>
