@@ -1,4 +1,4 @@
-# Hedera NFT Creator
+# Hedera SimpleMint
 
 ## Getting Started
 
@@ -32,6 +32,6 @@ These advantages resulted in, [the total value of NFT's reaching $41 billion dol
 
 However, many people do not know the first thing about creating an NFT and the process can be quite technically complex. Artists often hire developers to help turn their art into NFT's and [businesses have been created merely to help create NFT's](https://synapsereality.io/services/synapse-new-nft-services/).
 
-NFT Creator is a web app that allows anyone to create an NFT with a few clicks of a button. All it requires is for the user to upload an image and give the NFT a name. Upon clicking mint now, an NFT is created with the image stored in IPFS and automatically deposited into the creator's blockchain wallet. The underlying blockchain is [Hedera](https://hedera.com/), which is a carbon negative, enterprise grade blockchain trusted by companies like Google and Boeing.
+SimpleMint is a web app that allows anyone to create an NFT with a few clicks of a button. All it requires is for the user to upload an image and give the NFT a name. Upon clicking mint now, an NFT is created with the image stored in IPFS and automatically deposited into the creator's blockchain wallet. The underlying blockchain is [Hedera](https://hedera.com/), which is a carbon negative, enterprise grade blockchain trusted by companies like Google and Boeing.
 
 We hope that creators and even just regular people with photos lying around will be able to turn their images into NFT's to partake in the massive advantages of this new technology.
