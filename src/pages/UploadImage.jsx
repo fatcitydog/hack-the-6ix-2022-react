@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Box, RootBox, Input, FancyButton } from "../styles/globalStyles";
 import DropImage from "../components/DropImage";
 import { uploadFileAndCreateNFT } from "../../create-utils";
-import { account } from "../../account"
+import { account } from "../../account";
 import { viewNFTs, loadImage } from "../../view-utils";
 
 const moveShadow = keyframes`
@@ -66,7 +66,7 @@ const UploadImage = () => {
       setDisabledMint(true);
     }
   }, [name]);
-
+  console.log("account", account);
   //implement a function to mint the image to NFT
   const handleMint = async () => {
     await uploadFileAndCreateNFT(file, name, account);
