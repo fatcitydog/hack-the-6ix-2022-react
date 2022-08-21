@@ -119,7 +119,8 @@ export default function NFTDashboard() {
                 <Image src={cidLink.cid} />
                 <Text>
                   ID: {cidLink.nftId.tokenId.num.low} <br />
-                  Date Created:{" "}
+                  Date Created:
+                  <br />
                   {timeDifference(cidLink.creationTime.seconds.low)}
                 </Text>
               </Square>
