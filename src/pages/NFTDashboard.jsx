@@ -60,7 +60,7 @@ const Square = styled(RootBox)`
   border-radius: 15px;
 `;
 export default function NFTDashboard() {
-  const [nftData, setNftData] = useState();
+  const [nftData, setNftData] = useState([]);
   const [cidData, setCidData] = useState([]);
 
   const handleNftData = async () => {
@@ -89,27 +89,33 @@ export default function NFTDashboard() {
     }
     setCidData(nftArray);
   };
-  // console.log(cidData);
+  console.log(cidData);
   // console.log(nftData);
   useEffect(() => {
     handleNftData();
   }, []);
   //this function is here to make sure non-cid nfts arent rendered
-  // const nftDataWithImage = nftData.filter((x) => x.metadata.length > 1);
+  const nftDataWithImage = nftData.filter((x) => x.metadata.length > 1);
+
+  const mergedArr = nftDataWithImage.map((element, index) => {
+    return {
+      cid: cidData[index],
+      ...element,
+    };
+  });
+  console.log(mergedArr);
+
   return (
     <RootBox>
       <Background />
 
-      {/* {nftDataWithImage &&
-        nftDataWithImage.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)} */}
-
       <ImageBox>
-        {cidData.length > 0 ? (
+        {mergedArr.length > 0 ? (
           <Item>
-            {cidData.map((cidLink, index) => (
+            {mergedArr.map((cidLink, index) => (
               <Square key={index}>
-                <Image src={cidLink} />
-                <Text>Number {index + 1}</Text>
+                <Image src={cidLink.cid} />
+                <Text>ID: {cidLink.nftId.tokenId.num.low}</Text>
               </Square>
             ))}
           </Item>
