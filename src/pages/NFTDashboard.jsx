@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import React from "react";
-import { Box } from "../styles/globalStyles";
-import { TokenNftInfo } from "@hashgraph/sdk";
+import { Box, FancyButton } from "../styles/globalStyles";
 import { viewNFTs } from "../../view-utils.js";
 import { account } from "../../account.js";
 import { useState, useEffect } from "react";
-import Modal from "../components/layout/Modal";
 import { loadImage } from "../../view-utils.js";
+import { Link } from "react-router-dom";
 import Background from "../components/layout/Background";
 
+const MintButton = styled(FancyButton)`
+  &:hover {
+    background-color: #588157;
+    color: white;
+  }
+`;
 const RootBox = styled(Box)`
   height: 100vh;
   width: 100%;
@@ -26,10 +31,11 @@ export const Item = styled.div`
   
 `;
 const Image = styled.img`
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   overflow: hidden;
   padding: 2px;
+  display: inline-block;
 `;
 export default function NFTDashboard() {
   const [nftData, setNftData] = useState();
@@ -37,7 +43,7 @@ export default function NFTDashboard() {
   const handleNftData = async () => {
     const nfts = await viewNFTs(account);
     setNftData(nfts);
-    // console.log(nfts);
+    console.log(nfts);
     let array = [];
     for (let i = 0; i < nfts.length; i++) {
       const nft = nfts[i];
@@ -71,6 +77,9 @@ export default function NFTDashboard() {
         nftDataWithImage.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)} */}
 
       <Item>{cidData && cidData.map((x) => <Image src={x} />)}</Item>
+      <Link to="/upload">
+        <MintButton>Back To Minter</MintButton>
+      </Link>
     </RootBox>
   );
 }
