@@ -48,26 +48,31 @@ const BigCard = styled.section`
 
 export default function NFTDashboard() {
   const [nftData, setNftData] = useState();
-  const [cidData, setCidData] = useState();
-  const handleMint = async () => {
+  const [cidData, setCidData] = useState([]);
+  const handleNftData = async () => {
     const nfts = await viewNFTs(account);
-
+    setNftData(nfts);
+    // console.log(nfts);
     for (let i = 0; i < nfts.length; i++) {
       const nft = nfts[i];
+      //serialize into a string
+      // console.log(nft);
       const cid = String.fromCharCode(...nft.metadata);
+      // console.log(cid);
       //metadata length is always at least 1 even when empty
       if (cid.length > 1) {
         const cidFinal = await loadImage(cid);
         console.log(loadImage(cid));
-        setCidData(cidFinal);
+        // setCidData(cidFinal);
+        setCidData((prev) => [...prev, cidFinal]);
+        console.log(cidData);
       }
-      setNftData(nfts);
     }
   };
-  console.log(cidData);
-  console.log(nftData);
+  // console.log(cidData);
+  // console.log(nftData);
   useEffect(() => {
-    handleMint();
+    handleNftData();
   }, []);
   //this function is here to make sure non-cid nfts arent rendered
   // const nftDataWithImage = nftData.filter((x) => x.metadata.length > 1);
@@ -75,14 +80,10 @@ export default function NFTDashboard() {
     <RootBox>
       <Background />
 
-      <Title>
-        <div>NFTDashboard</div>
-      </Title>
-
       {/* {nftData &&
           nftData.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)} */}
       <BigCard>
-        {cidData && <img style={{ height: "300px" }} src={cidData} />}
+        {cidData && <img style={{ height: "200px" }} src={cidData} />}
       </BigCard>
     </RootBox>
   );
