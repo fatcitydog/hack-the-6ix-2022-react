@@ -83,6 +83,9 @@ const UploadImage = () => {
         <Link to="/">
           <Text>BACK</Text>
         </Link>
+        <Link to="/dashboard">
+          <Text>DASHBOARD</Text>
+        </Link>
       </FormBox>
     </PageBox>
   );

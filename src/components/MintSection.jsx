@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { RootBox, FancyButton, Tilte, Box, Text } from "../styles/globalStyles";
@@ -14,7 +13,7 @@ const MintButton = styled(FancyButton)`
     color: white;
   }
 `;
-const MintSection = () => {
+const MintSection = ({ handleImageFormOpen }) => {
   return (
     <RootBox>
       <Tilte>MINT YOUR NFT</Tilte>
@@ -26,9 +25,7 @@ const MintSection = () => {
           NFT
         </Text>
 
-        <Link to="/upload">
-          <MintButton>Continue </MintButton>
-        </Link>
+        <MintButton onClick={handleImageFormOpen}>Continue </MintButton>
       </Box>
     </RootBox>
   );
