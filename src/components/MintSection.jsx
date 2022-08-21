@@ -2,11 +2,6 @@ import styled from "styled-components";
 
 import { RootBox, FancyButton, Tilte, Box, Text } from "../styles/globalStyles";
 
-const SubTitle = styled(Tilte)`
-  font-size: 1.5rem;
-  color: #588157;
-`;
-
 const MintButton = styled(FancyButton)`
   &:hover {
     background-color: #588157;

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { BsXLg } from "react-icons/bs";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 
 const BigCard = styled.section`
   position: fixed;
@@ -53,3 +55,11 @@ export default function Modal({ action, children }) {
     </Overlay>
   );
 }
+
+export const Loading = () => {
+  return (
+    <Box sx={{ display: "flex" }}>
+      <CircularProgress />
+    </Box>
+  );
+};

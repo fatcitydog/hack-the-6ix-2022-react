@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { useState, useEffect } from "react";
 
-import { Box, RootBox, Input, FancyButton } from "../styles/globalStyles";
+import { RootBox, Input, FancyButton } from "../styles/globalStyles";
 import DropImage from "../components/DropImage";
 import { uploadFileAndCreateNFT } from "../../create-utils";
 import { account } from "../../account";

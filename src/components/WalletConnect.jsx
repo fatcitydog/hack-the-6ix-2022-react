@@ -1,6 +1,6 @@
 import FancyButton from "../styles/globalStyles";
-
 import connectToWallet from "../../../helpers/hashconnect";
+
 export default function WalletConnect() {
   return (
     <>

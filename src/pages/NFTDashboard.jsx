@@ -1,50 +1,68 @@
 import styled from "styled-components";
-import React from "react";
-import { Box, FancyButton } from "../styles/globalStyles";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+
+import { Box, FancyButton, Text } from "../styles/globalStyles";
 import { viewNFTs } from "../../view-utils.js";
 import { account } from "../../account.js";
-import { useState, useEffect } from "react";
 import { loadImage } from "../../view-utils.js";
-import { Link } from "react-router-dom";
+import { Loading } from "../components/layout/Modal";
 import Background from "../components/layout/Background";
 
 const MintButton = styled(FancyButton)`
+  width: 8rem;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
   &:hover {
     background-color: #588157;
     color: white;
   }
 `;
+
+const ImageBox = styled(Box)`
+  z-index: 50;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6rem 0;
+`;
+
 const RootBox = styled(Box)`
-  height: 100vh;
   width: 100%;
   background-color: grey;
   justify-content: center;
   display: flex;
-  z-index: 50;
   align-items: center;
 `;
-export const Item = styled.div`
+const Item = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
+  width: 80%;
   padding: 0.5rem;
 `;
 const Image = styled.img`
-  height: 150px;
-  width: 150px;
+  height: 10rem;
+  width: 10rem;
   overflow: hidden;
   padding: 2px;
   display: inline-block;
 `;
 
-const Square = styled.div`
-  height: 150px;
-  width: 150px;
-  color: white;
+const Square = styled(RootBox)`
+  height: 16rem;
+  width: 14rem;
+  margin: 1rem;
+  border: 1px solid white;
+  border-radius: 15px;
 `;
 export default function NFTDashboard() {
   const [nftData, setNftData] = useState();
   const [cidData, setCidData] = useState([]);
+
   const handleNftData = async () => {
     const nfts = await viewNFTs(account);
     setNftData(nfts);
@@ -85,17 +103,23 @@ export default function NFTDashboard() {
       {/* {nftDataWithImage &&
         nftDataWithImage.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)} */}
 
-      <Item>
-        {cidData &&
-          cidData.map((x, index) => (
-            <Square key={index}>
-              <Image src={x} />
-            </Square>
-          ))}
-      </Item>
-      <Link to="/">
-        <MintButton>Back</MintButton>
-      </Link>
+      <ImageBox>
+        {cidData.length > 0 ? (
+          <Item>
+            {cidData.map((cidLink, index) => (
+              <Square key={index}>
+                <Image src={cidLink} />
+                <Text>Number {index + 1}</Text>
+              </Square>
+            ))}
+          </Item>
+        ) : (
+          <Loading />
+        )}
+        <Link to="/">
+          <MintButton>Back</MintButton>
+        </Link>
+      </ImageBox>
     </RootBox>
   );
 }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import HeroSection from "../components/HeroSection";
 import CollectWallet from "../components/CollectWallet";
-import { Box } from "../styles/globalStyles";
+import { Box, FancyButton } from "../styles/globalStyles";
 import Modal from "../components/layout/Modal";
 import MintSection from "../components/MintSection";
 import Background from "../components/layout/Background";
@@ -45,6 +45,19 @@ const WalletTokenBox = styled(Box)`
   }
 `;
 
+const LogoutButton = styled(FancyButton)`
+  width: 7rem;
+  height: 3rem;
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  z-index: 50;
+`;
+
 const Home = () => {
   const [auth, setAuth] = useState(false);
   const [pairingString, setPairingString] = useState("");
@@ -58,6 +71,10 @@ const Home = () => {
     setFormCard(!formCard);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("walletToken");
+    setAuth(false);
+  };
   useEffect(() => {
     const key = localStorage.getItem("walletToken");
     if (key) {
@@ -65,7 +82,7 @@ const Home = () => {
       setPairingString(key);
     }
     //if connect with wallet
-  });
+  }, [auth]);
   return (
     <RootBox>
       <Background />
@@ -75,6 +92,7 @@ const Home = () => {
           <Link to="/dashboard">
             <WalletTokenBox>{pairingString}</WalletTokenBox>
           </Link>
+          <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
           <MintSection handleFormCard={handleFormCard} />
 
           {formCard && <UploadImage handleFormCard={handleFormCard} />}

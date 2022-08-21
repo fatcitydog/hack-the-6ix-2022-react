@@ -27,9 +27,8 @@ const CollectWallet = ({ handleCardOpen, setPairingString, setAuth }) => {
       const string = await connectToWallet();
       if (string) {
         setPairingString(string);
-
-        //should have a way to match the string with the user?
         localStorage.setItem("walletToken", string);
+        setAuth(true);
         handleCardOpen();
       }
     } catch (err) {
