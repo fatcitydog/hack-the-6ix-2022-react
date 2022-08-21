@@ -26,12 +26,10 @@ const CollectWallet = ({ handleCardOpen, setPairingString, setAuth }) => {
     try {
       const string = await connectToWallet();
       if (string) {
-        console.log("connect!");
         setPairingString(string);
 
         //should have a way to match the string with the user?
-        setAuth(true);
-
+        localStorage.setItem("walletToken", string);
         handleCardOpen();
       }
     } catch (err) {

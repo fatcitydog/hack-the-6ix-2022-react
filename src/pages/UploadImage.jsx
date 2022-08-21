@@ -13,16 +13,13 @@ const moveShadow = keyframes`
   100% {box-shadow: 50px 30px 500px 50px #283618;}
 `;
 
-const PageBox = styled(Box)`
-  height: 100vh;
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-`;
-
 const FormBox = styled(RootBox)`
-  background-color: #dad7cd;
+  min-height: 30rem;
   animation: ${moveShadow} 3s linear infinite;
+  @media screen and (min-width: 768px) {
+    position: relative;
+    left: 6rem;
+  }
 `;
 
 const MintButton = styled(FancyButton)`
@@ -49,12 +46,13 @@ const Button = ({ disabled, onClick, children }) => {
 const Text = styled.p`
   text-decoration: none;
   color: black;
+  cursor: pointer;
   &:hover {
     font-weight: bold;
   }
 `;
 
-const UploadImage = () => {
+const UploadImage = ({ handleFormCard }) => {
   const [name, setName] = useState("");
   const [file, setFile] = useState({});
   const [disabledMint, setDisabledMint] = useState(true);
@@ -66,28 +64,25 @@ const UploadImage = () => {
       setDisabledMint(true);
     }
   }, [name]);
-  console.log("account", account);
+
   //implement a function to mint the image to NFT
   const handleMint = async () => {
     await uploadFileAndCreateNFT(file, name, account);
   };
 
   return (
-    <PageBox>
-      <FormBox>
-        <DropImage setFile={setFile} />
-        <Input placeholder="Name" onChange={(e) => setName(e.target.value)} />
-        <Button disabled={disabledMint} onClick={handleMint}>
-          Mint NFT
-        </Button>
-        <Link to="/">
-          <Text>BACK</Text>
-        </Link>
-        <Link to="/dashboard">
-          <Text>DASHBOARD</Text>
-        </Link>
-      </FormBox>
-    </PageBox>
+    <FormBox>
+      <DropImage setFile={setFile} />
+      <Input placeholder="Name" onChange={(e) => setName(e.target.value)} />
+      <Button disabled={disabledMint} onClick={handleMint}>
+        Mint NFT
+      </Button>
+      <Text onClick={handleFormCard}>BACK</Text>
+
+      <Link to="/dashboard">
+        <Text>DASHBOARD</Text>
+      </Link>
+    </FormBox>
   );
 };
 
