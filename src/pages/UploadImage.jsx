@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { Box, RootBox, Input, FancyButton } from "../styles/globalStyles";
 import DropImage from "../components/DropImage";
 import { uploadFileAndCreateNFT } from "../../create-utils";
-import { account } from "../../account"
+import { account } from "../../account";
 import { viewNFTs, loadImage } from "../../view-utils";
 
 const moveShadow = keyframes`
@@ -82,6 +82,9 @@ const UploadImage = () => {
         </Button>
         <Link to="/">
           <Text>BACK</Text>
+        </Link>
+        <Link to="/dashboard">
+          <Text>DASHBOARD</Text>
         </Link>
       </FormBox>
     </PageBox>

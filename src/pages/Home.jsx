@@ -7,6 +7,7 @@ import { Box } from "../styles/globalStyles";
 import Modal from "../components/layout/Modal";
 import MintSection from "../components/MintSection";
 import Background from "../components/layout/Background";
+import UploadImage from "./UploadImage";
 
 const RootBox = styled(Box)`
   height: 100vh;
@@ -31,9 +32,14 @@ const Home = () => {
   const [auth, setAuth] = useState(false);
   const [pairingString, setPairingString] = useState("");
   const [cardOpen, setCardOpen] = useState(false);
+  const [imageFormOpen, setImageFormOpen] = useState(false);
 
   const handleCardOpen = () => {
     setCardOpen(!cardOpen);
+  };
+
+  const handleImageFormOpen = () => {
+    setImageFormOpen(!imageFormOpen);
   };
 
   useEffect(() => {
@@ -46,8 +52,9 @@ const Home = () => {
 
       {auth ? (
         <>
-          <MintSection />
+          <MintSection handleImageFormOpen={handleImageFormOpen} />
           <WalletTokenBox>{pairingString}</WalletTokenBox>
+          {imageFormOpen && <UploadImage />}
         </>
       ) : (
         <HeroSection handleCardOpen={handleCardOpen} />
