@@ -31,7 +31,6 @@ export const Box = styled.section`
   flex-direction: column;
 
 `
-
 export const RootBox = styled(Box)`
   background-color: white;
   color: black;

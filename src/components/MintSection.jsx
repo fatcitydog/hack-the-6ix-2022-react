@@ -13,7 +13,7 @@ const MintButton = styled(FancyButton)`
     color: white;
   }
 `;
-const MintSection = ({ handleImageFormOpen }) => {
+const MintSection = ({ handleFormCard }) => {
   return (
     <RootBox>
       <Tilte>MINT YOUR NFT</Tilte>
@@ -25,7 +25,7 @@ const MintSection = ({ handleImageFormOpen }) => {
           NFT
         </Text>
 
-        <MintButton onClick={handleImageFormOpen}>Continue </MintButton>
+        <MintButton onClick={handleFormCard}>Continue </MintButton>
       </Box>
     </RootBox>
   );

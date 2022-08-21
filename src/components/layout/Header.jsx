@@ -2,15 +2,15 @@ import styled from "styled-components";
 
 const Box = styled.div`
   width: 100%;
-  height: 4rem;
-  background-color: black;
   color: white;
-  display: flex;
-  align-items: center;
+  font-size: 4rem;
+  font-weight: bolder;
+  background-color: grey;
+  padding: 1rem;
 `;
 
 const Header = () => {
-  return <Box>Header</Box>;
+  return <Box>SimpleMint</Box>;
 };
 
 export default Header;
