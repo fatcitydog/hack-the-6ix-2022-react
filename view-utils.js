@@ -51,10 +51,10 @@ export async function viewNFTs(account) {
     const nft = nftInfos[i];
     const cid = String.fromCharCode(...nft.metadata);
     if (cid.length > 1) {
-      console.log("CID: " + cid);
-      console.log("Length: ", cid.length);
+      // console.log("CID: " + cid);
+      // console.log("Length: ", cid.length);
       const url = await loadImage(cid);
-      console.log("URL: " + url);
+      // console.log("URL: " + url);
     }
   }
   return nftInfos;

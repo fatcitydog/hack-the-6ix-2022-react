@@ -1,15 +1,19 @@
 import styled from "styled-components";
 import React from "react";
-import { Box } from "../styles/globalStyles";
-import { TokenNftInfo } from "@hashgraph/sdk";
+import { Box, FancyButton } from "../styles/globalStyles";
 import { viewNFTs } from "../../view-utils.js";
 import { account } from "../../account.js";
 import { useState, useEffect } from "react";
-import Modal from "../components/layout/Modal";
-import { Grid } from "@mui/material";
 import { loadImage } from "../../view-utils.js";
+import { Link } from "react-router-dom";
 import Background from "../components/layout/Background";
 
+const MintButton = styled(FancyButton)`
+  &:hover {
+    background-color: #588157;
+    color: white;
+  }
+`;
 const RootBox = styled(Box)`
   height: 100vh;
   width: 100%;
@@ -19,41 +23,33 @@ const RootBox = styled(Box)`
 
   align-items: center;
 `;
-const Title = styled(Box)`
-  font-size: 3em;
-  // margin-bottom: 500px;
-`;
-const BigCard = styled.section`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  padding: 1rem 2rem;
-  background-color: white;
-  box-shadow: 2px 2px 2px grey;
-  border-radius: 15px;
-  height: 50vh;
-  width: 100%;
-  max-width: 1000px;
-  transform: translate(-50%, -50%) !important;
-  display: flex;
-  align-items: center;
+export const Item = styled.div`
+  display: flex
+  flex-direction: row;
   justify-content: center;
-  z-index: 100;
-
-  @media screen and (min-width: 768px) {
-    width: 35rem;
-    height: 25rem;
-  }
+  padding: .5rem
+  
 `;
-
+const Image = styled.img`
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  padding: 2px;
+  display: inline-block;
+`;
 export default function NFTDashboard() {
   const [nftData, setNftData] = useState();
   const [cidData, setCidData] = useState([]);
   const handleNftData = async () => {
     const nfts = await viewNFTs(account);
     setNftData(nfts);
+<<<<<<< HEAD
     // console.log(nfts);
     let nftArry = [];
+=======
+    console.log(nfts);
+    let array = [];
+>>>>>>> 18984943ad7230acce0ad552d548253d6af05bb2
     for (let i = 0; i < nfts.length; i++) {
       const nft = nfts[i];
       //serialize into a string
@@ -63,6 +59,7 @@ export default function NFTDashboard() {
       //metadata length is always at least 1 even when empty
       if (cid.length > 1) {
         const cidFinal = await loadImage(cid);
+<<<<<<< HEAD
 
         console.log(loadImage(cid));
         // setCidData(cidFinal);
@@ -72,6 +69,15 @@ export default function NFTDashboard() {
     console.log("nftArry", nftArry);
     setNftData(nftArry);
     console.log(nftData);
+=======
+        // console.log(loadImage(cid));
+        // setCidData(cidFinal);
+        // console.log(cidData);
+        array.push(cidFinal);
+      }
+    }
+    setCidData(array);
+>>>>>>> 18984943ad7230acce0ad552d548253d6af05bb2
   };
   // console.log(cidData);
   // console.log(nftData);
@@ -84,11 +90,13 @@ export default function NFTDashboard() {
     <RootBox>
       <Background />
 
-      {/* {nftData &&
-          nftData.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)} */}
-      <BigCard>
-        {cidData && <img style={{ height: "200px" }} src={cidData} />}
-      </BigCard>
+      {/* {nftDataWithImage &&
+        nftDataWithImage.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)} */}
+
+      <Item>{cidData && cidData.map((x) => <Image src={x} />)}</Item>
+      <Link to="/upload">
+        <MintButton>Back To Minter</MintButton>
+      </Link>
     </RootBox>
   );
 }
