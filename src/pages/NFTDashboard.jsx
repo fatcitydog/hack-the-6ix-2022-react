@@ -58,6 +58,7 @@ const Square = styled(RootBox)`
   margin: 1rem;
   border: 1px solid white;
   border-radius: 15px;
+  background: white;
 `;
 export default function NFTDashboard() {
   const [nftData, setNftData] = useState();
