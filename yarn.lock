@@ -2314,9 +2314,6 @@ yargs-parser@^20.2.2:
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-20.2.9.tgz"
   integrity sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 "@grpc/grpc-js@^1.6.7":
   "integrity" "sha512-XTX5z/P5kH802MDoVm/rqOil0UwYEOEjf9+NPgfmm5UINIxDzwYaXfVR6z8svCBG8Hlbu/FzkXqhP8J5xaWzSQ=="
   "resolved" "https://registry.npmjs.org/@grpc/grpc-js/-/grpc-js-1.6.10.tgz"

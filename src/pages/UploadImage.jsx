@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { useState, useEffect } from "react";
 
@@ -56,6 +56,7 @@ const UploadImage = ({ handleFormCard }) => {
   const [name, setName] = useState("");
   const [file, setFile] = useState({});
   const [disabledMint, setDisabledMint] = useState(true);
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (name !== "") {
@@ -68,6 +69,7 @@ const UploadImage = ({ handleFormCard }) => {
   //implement a function to mint the image to NFT
   const handleMint = async () => {
     await uploadFileAndCreateNFT(file, name, account);
+    navigate("/dashboard", { replace: true });
   };
 
   return (

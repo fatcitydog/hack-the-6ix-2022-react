@@ -12,6 +12,7 @@ const MintButton = styled(FancyButton)`
     background-color: #588157;
     color: white;
   }
+  
 `;
 const MintSection = ({ handleFormCard }) => {
   return (
@@ -24,7 +25,6 @@ const MintSection = ({ handleFormCard }) => {
           An easy and quick minting solution for those who just want to mints a
           NFT
         </Text>
-
         <MintButton onClick={handleFormCard}>Continue </MintButton>
       </Box>
     </RootBox>

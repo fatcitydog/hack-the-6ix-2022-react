@@ -17,18 +17,17 @@ const MintButton = styled(FancyButton)`
 const RootBox = styled(Box)`
   height: 100vh;
   width: 100%;
-  background-color: white;
+  background-color: grey;
   justify-content: center;
   display: flex;
-
+  z-index: 50;
   align-items: center;
 `;
 export const Item = styled.div`
-  display: flex
+  display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: .5rem
-  
+  padding: 0.5rem;
 `;
 const Image = styled.img`
   height: 150px;
@@ -37,19 +36,24 @@ const Image = styled.img`
   padding: 2px;
   display: inline-block;
 `;
+
+const Square = styled.div`
+  height: 150px;
+  width: 150px;
+  color: white;
+`;
 export default function NFTDashboard() {
   const [nftData, setNftData] = useState();
   const [cidData, setCidData] = useState([]);
   const handleNftData = async () => {
     const nfts = await viewNFTs(account);
     setNftData(nfts);
-<<<<<<< HEAD
+
     // console.log(nfts);
-    let nftArry = [];
-=======
+    let nftArray = [];
+
     console.log(nfts);
-    let array = [];
->>>>>>> 18984943ad7230acce0ad552d548253d6af05bb2
+
     for (let i = 0; i < nfts.length; i++) {
       const nft = nfts[i];
       //serialize into a string
@@ -59,25 +63,13 @@ export default function NFTDashboard() {
       //metadata length is always at least 1 even when empty
       if (cid.length > 1) {
         const cidFinal = await loadImage(cid);
-<<<<<<< HEAD
 
         console.log(loadImage(cid));
         // setCidData(cidFinal);
-        nftArry.push(cidFinal);
+        nftArray.push(cidFinal);
       }
     }
-    console.log("nftArry", nftArry);
-    setNftData(nftArry);
-    console.log(nftData);
-=======
-        // console.log(loadImage(cid));
-        // setCidData(cidFinal);
-        // console.log(cidData);
-        array.push(cidFinal);
-      }
-    }
-    setCidData(array);
->>>>>>> 18984943ad7230acce0ad552d548253d6af05bb2
+    setCidData(nftArray);
   };
   // console.log(cidData);
   // console.log(nftData);
@@ -93,7 +85,14 @@ export default function NFTDashboard() {
       {/* {nftDataWithImage &&
         nftDataWithImage.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)} */}
 
-      <Item>{cidData && cidData.map((x) => <Image src={x} />)}</Item>
+      <Item>
+        {cidData &&
+          cidData.map((x, index) => (
+            <Square key={index}>
+              <Image src={x} />
+            </Square>
+          ))}
+      </Item>
       <Link to="/upload">
         <MintButton>Back To Minter</MintButton>
       </Link>
