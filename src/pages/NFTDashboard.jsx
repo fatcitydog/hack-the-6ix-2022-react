@@ -23,7 +23,6 @@ const SubBox = styled(Box)`
   background-color: white;
   justify-content: center;
   display: flex;
-  flex-direction: row;
   align-items: center;
 `;
 
@@ -36,6 +35,7 @@ export default function NFTDashboard() {
     for (let i = 0; i < nfts.length; i++) {
       const nft = nfts[i];
       const cid = String.fromCharCode(...nft.metadata);
+      //metadata length is always at least 1 even when empty
       if (cid.length > 1) {
         const cidFinal = await loadImage(cid);
         console.log(loadImage(cid));
@@ -50,13 +50,14 @@ export default function NFTDashboard() {
     handleMint();
   }, []);
 
+  const nftDataWithImage = nftData.filter((x) => x.metadata.length > 1);
   return (
     <RootBox>
       <div>NFTDashboard</div>
       <SubBox>
-        {nftData &&
-          nftData.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)}
-        {<img style={{ height: "200px" }} src={cidData} />}
+        {nftDataWithImage &&
+          nftDataWithImage.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)}
+        {cidData && <img style={{ height: "200px" }} src={cidData} />}
       </SubBox>
     </RootBox>
   );
