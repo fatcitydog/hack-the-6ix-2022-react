@@ -5,8 +5,10 @@ import { TokenNftInfo } from "@hashgraph/sdk";
 import { viewNFTs } from "../../view-utils.js";
 import { account } from "../../account.js";
 import { useState, useEffect } from "react";
+import Modal from "../components/layout/Modal";
 import { Grid } from "@mui/material";
 import { loadImage } from "../../view-utils.js";
+import Background from "../components/layout/Background";
 
 const RootBox = styled(Box)`
   height: 100vh;
@@ -17,13 +19,31 @@ const RootBox = styled(Box)`
 
   align-items: center;
 `;
-const SubBox = styled(Box)`
-  height: 100vh;
-  width: 100%;
+const Title = styled(Box)`
+  font-size: 3em;
+  // margin-bottom: 500px;
+`;
+const BigCard = styled.section`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 1rem 2rem;
   background-color: white;
-  justify-content: center;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 15px;
+  height: 50vh;
+  width: 100%;
+  max-width: 1000px;
+  transform: translate(-50%, -50%) !important;
   display: flex;
   align-items: center;
+  justify-content: center;
+  z-index: 100;
+
+  @media screen and (min-width: 768px) {
+    width: 35rem;
+    height: 25rem;
+  }
 `;
 
 export default function NFTDashboard() {
@@ -43,22 +63,27 @@ export default function NFTDashboard() {
       }
       setNftData(nfts);
     }
-    console.log(cidData);
-    console.log(nftData);
   };
+  console.log(cidData);
+  console.log(nftData);
   useEffect(() => {
     handleMint();
   }, []);
-
-  const nftDataWithImage = nftData.filter((x) => x.metadata.length > 1);
+  //this function is here to make sure non-cid nfts arent rendered
+  // const nftDataWithImage = nftData.filter((x) => x.metadata.length > 1);
   return (
     <RootBox>
-      <div>NFTDashboard</div>
-      <SubBox>
-        {nftDataWithImage &&
-          nftDataWithImage.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)}
-        {cidData && <img style={{ height: "200px" }} src={cidData} />}
-      </SubBox>
+      <Background />
+
+      <Title>
+        <div>NFTDashboard</div>
+      </Title>
+
+      {/* {nftData &&
+          nftData.map((x) => <p>nft id: {x.nftId.tokenId.num.low}</p>)} */}
+      <BigCard>
+        {cidData && <img style={{ height: "300px" }} src={cidData} />}
+      </BigCard>
     </RootBox>
   );
 }
