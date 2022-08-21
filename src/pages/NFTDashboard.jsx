@@ -8,6 +8,7 @@ import { account } from "../../account.js";
 import { loadImage } from "../../view-utils.js";
 import { Loading } from "../components/layout/Modal";
 import Background from "../components/layout/Background";
+import timeDifference from "../../time";
 
 const MintButton = styled(FancyButton)`
   width: 8rem;
@@ -53,7 +54,7 @@ const Image = styled.img`
 `;
 
 const Square = styled(RootBox)`
-  height: 16rem;
+  height: 18rem;
   width: 14rem;
   margin: 1rem;
   border: 1px solid white;
@@ -71,7 +72,7 @@ export default function NFTDashboard() {
     // console.log(nfts);
     let nftArray = [];
 
-    console.log(nfts);
+    // console.log(nfts);
 
     for (let i = 0; i < nfts.length; i++) {
       const nft = nfts[i];
@@ -116,7 +117,11 @@ export default function NFTDashboard() {
             {mergedArr.map((cidLink, index) => (
               <Square key={index}>
                 <Image src={cidLink.cid} />
-                <Text>ID: {cidLink.nftId.tokenId.num.low}</Text>
+                <Text>
+                  ID: {cidLink.nftId.tokenId.num.low} <br />
+                  Date Created:{" "}
+                  {timeDifference(cidLink.creationTime.seconds.low)}
+                </Text>
               </Square>
             ))}
           </Item>
