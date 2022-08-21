@@ -82,7 +82,7 @@ const UploadImage = ({ handleFormCard }) => {
       <Text onClick={handleFormCard}>BACK</Text>
 
       <Link to="/dashboard">
-        <Text>DASHBOARD</Text>
+        <Text>My Collection</Text>
       </Link>
     </FormBox>
   );

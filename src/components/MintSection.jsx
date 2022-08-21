@@ -17,13 +17,11 @@ const MintButton = styled(FancyButton)`
 const MintSection = ({ handleFormCard }) => {
   return (
     <RootBox>
-      <Tilte>MINT YOUR NFT</Tilte>
+      <Tilte>Quick Mint</Tilte>
 
       <Box>
-        <SubTitle>Quick Mint</SubTitle>
         <Text>
-          An easy and quick minting solution for those who just want to mints a
-          NFT
+          Mint an NFT in a few clicks
         </Text>
         <MintButton onClick={handleFormCard}>Continue </MintButton>
       </Box>

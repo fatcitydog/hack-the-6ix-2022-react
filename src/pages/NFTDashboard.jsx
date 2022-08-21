@@ -93,8 +93,8 @@ export default function NFTDashboard() {
             </Square>
           ))}
       </Item>
-      <Link to="/upload">
-        <MintButton>Back To Minter</MintButton>
+      <Link to="/">
+        <MintButton>Back</MintButton>
       </Link>
     </RootBox>
   );
