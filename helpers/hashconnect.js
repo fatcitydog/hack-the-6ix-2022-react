@@ -23,9 +23,9 @@ const connectToWallet = async () => {
   );
 
   console.log(pairingString);
-  hashconnect.findLocalWallets()
-    ? hashconnect.findLocalWallets()
-    : window.open("https://wallet.hashpack.app/login/signin", "_blank");
+  // hashconnect.findLocalWallets()
+  //   ? hashconnect.findLocalWallets()
+  //   : window.open("https://wallet.hashpack.app/login/signin", "_blank");
 
   hashconnect.connectToLocalWallet(pairingString);
   return pairingString;
