@@ -69,30 +69,23 @@ export default function NFTDashboard() {
     const nfts = await viewNFTs(account);
     setNftData(nfts);
 
-    // console.log(nfts);
     let nftArray = [];
-
-    // console.log(nfts);
 
     for (let i = 0; i < nfts.length; i++) {
       const nft = nfts[i];
       //serialize into a string
-      // console.log(nft);
       const cid = String.fromCharCode(...nft.metadata);
-      // console.log(cid);
+
       //metadata length is always at least 1 even when empty
       if (cid.length > 1) {
         const cidFinal = await loadImage(cid);
 
-        console.log(loadImage(cid));
-        // setCidData(cidFinal);
         nftArray.push(cidFinal);
       }
     }
     setCidData(nftArray);
   };
-  console.log(cidData);
-  // console.log(nftData);
+
   useEffect(() => {
     handleNftData();
   }, []);
@@ -101,6 +94,7 @@ export default function NFTDashboard() {
 
   const mergedArr = nftDataWithImage.map((element, index) => {
     return {
+      //this is the IPFS info added to the existing nftData
       cid: cidData[index],
       ...element,
     };
@@ -116,7 +110,10 @@ export default function NFTDashboard() {
           <Item>
             {mergedArr.map((cidLink, index) => (
               <Square key={index}>
-                <Image src={cidLink.cid} />
+                <Image
+                  // wait until image loads, otherwise show error message
+                  src={cidLink.cid ? cidLink.cid : "image not loaded yet"}
+                />
                 <Text>
                   ID: {cidLink.nftId.tokenId.num.low} <br />
                   Date Created:

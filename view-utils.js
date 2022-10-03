@@ -18,6 +18,7 @@ export async function viewNFTs(account) {
 
   //Sign with client operator private key and submit the query to a Hedera network
   console.log("- Viewing NFTs for account: " + account.accountId + "\n");
+  console.log(account.privateKey);
   const accountInfo = await query.execute(hederaClient);
   console.log("Got account info: ", accountInfo);
 
