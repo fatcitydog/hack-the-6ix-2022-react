@@ -1,4 +1,7 @@
 import { PrivateKey, AccountId, PublicKey } from "@hashgraph/sdk";
+// import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+// dotenv.config();
+// import express from "express";
 
 const MY_ACCOUNT_ID = "0.0.47941636";
 const MY_PUBLIC_KEY =

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import pylon from "../assets/pylon.jpeg";
 import { Box, FancyButton, Text } from "../styles/globalStyles";
 import { viewNFTs } from "../../view-utils.js";
 import { account } from "../../account.js";
@@ -61,9 +61,11 @@ const Square = styled(RootBox)`
   border-radius: 15px;
   background: white;
 `;
-export default function NFTDashboard() {
+export default function NFTDashboard(props) {
+  console.log(props);
   const [nftData, setNftData] = useState([]);
   const [cidData, setCidData] = useState([]);
+  const [imageLoad, setImageLoad] = useState(false);
 
   const handleNftData = async () => {
     const nfts = await viewNFTs(account);
@@ -112,7 +114,8 @@ export default function NFTDashboard() {
               <Square key={index}>
                 <Image
                   // wait until image loads, otherwise show error message
-                  src={cidLink.cid ? cidLink.cid : "image not loaded yet"}
+                  src={imageLoad === true ? cidLink.cid : pylon}
+                  onLoad={() => setImageLoad(true)}
                 />
                 <Text>
                   ID: {cidLink.nftId.tokenId.num.low} <br />

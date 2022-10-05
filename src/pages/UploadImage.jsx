@@ -7,6 +7,7 @@ import DropImage from "../components/DropImage";
 import { uploadFileAndCreateNFT } from "../../create-utils";
 import { account } from "../../account";
 import { viewNFTs, loadImage } from "../../view-utils";
+import NFTDashboard from "./NFTDashboard";
 
 const moveShadow = keyframes`
   0% {box-shadow: 10px 20px 100px 20px #283618;}
